@@ -1,0 +1,50 @@
+<html>
+<head>
+<script type="text/javascript" src="lib/knockout-3.4.2.js"></script>
+</head>
+<body>
+<h1>Some Article</h1>
+<p>By <span data-bind="text: authorName"></p>
+<p>
+	Author Name : <input type="text" data-bind="value: authorName">
+</p>
+<hr>
+<table border="1">
+<thead>
+	<tr>
+		<th>First name</th><th>Last name</th>
+	</tr>
+</thead>
+<tbody data-bind="foreach: people">
+	<tr>
+		<td data-bind="text: firstName"></td>
+		<td data-bind="text: lastName"></td>
+	</tr>
+</tbody>
+</table>
+<hr>
+<label><input type="checkbox" data-bind="checked: displayMessage" /> Display message</label>
+<div data-bind="if: displayMessage">Here is a message. Astonishing.</div>
+<hr>
+Today's message is: <span data-bind="text: myMessage"></span>
+<hr>
+
+
+<script>
+	var viewModel = {
+	authorName: 'Caner Kuru',
+	displayMessage: ko.observable(false),
+	myMessage: ko.observable(),
+	people: [
+		{ firstName: 'Bert' , lastName: 'Bertington'},
+		{ firstName: 'Murat' , lastName: 'Demir'},
+		{ firstName: 'Bilgin' , lastName: 'Kara'}
+		]
+	};
+	ko.applyBindings(viewModel);
+	viewModel.myMessage("Hello, world!");
+	
+</script>
+
+</body>
+</html>
